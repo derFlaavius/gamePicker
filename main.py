@@ -13,6 +13,7 @@ def clearwdw(): # Löscht den gesamten Inhalt eines Fensters!
     for widget in root.winfo_children():
         widget.place_forget()
 
+
 def hinzufuegen(liste, eingabe):
     if eingabe != "":
         liste.append(eingabe)
@@ -20,10 +21,12 @@ def hinzufuegen(liste, eingabe):
     else:
         messagebox.showwarning("Eingabefehler", "Bitte gebe was in das Feld ein!")
 
+
 def reset(spielliste):
     spielliste = spielliste.clear()
     spielliste = []
     mainpage(spielliste)
+
 
 def wuerfeln(liste12): # ChatGPT
     if liste12 == []:
@@ -55,7 +58,6 @@ def mainpage(spielliste):
         for item in liste:
             listbox_widget.insert(tk.END, item)
         listbox_widget.place(x=xwert, y=ywert)
-
 
     clearwdw()
     pic_logo1.pack()
@@ -96,8 +98,8 @@ def mainpage(spielliste):
 
 
 # Deklaration Pfade
-lnk_azure = os.path.join("themes", "azure", "azure.tcl")
-lnk_logo1 = os.path.join("images", "logo1.png")
+lnk_azure = os.path.join(os.path.dirname(__file__), "themes", "azure", "azure.tcl")
+lnk_logo1 = os.path.join(os.path.dirname(__file__), "images", "logo1.png")
 
 # Erzeugung der Listen
 spielliste = listen.spiele
