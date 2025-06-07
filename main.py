@@ -23,12 +23,17 @@ def hinzufuegen(liste, eingabe):
 
 
 def reset(spielliste):
-    spielliste = spielliste.clear()
-    spielliste = []
+    spielliste.clear()
     mainpage(spielliste)
 
 
 def wuerfeln(liste12): # ChatGPT
+    # Ergebnis-Label neu setzen oder erhalten
+    if not hasattr(root, "lb_info"):
+        root.lb_info = tk.Label(root, font=("Arial", 25, "bold"))
+    root.lb_info.place(x=300, y=280)
+
+    print(liste12)
     if liste12 == []:
         messagebox.showwarning("Eingabefehler", "Bitte gib zuvor ein paar Namen ein!")
         return
@@ -55,9 +60,11 @@ def wuerfeln(liste12): # ChatGPT
 def mainpage(spielliste):
     def listbox(liste, xwert, ywert):
         listbox_widget = tk.Listbox(root, height=6, width=24, activestyle='none')
-        for item in liste:
-            listbox_widget.insert(tk.END, item)
+        if liste != []:
+            for item in liste:
+                listbox_widget.insert(tk.END, item)
         listbox_widget.place(x=xwert, y=ywert)
+
 
     clearwdw()
     pic_logo1.pack()
@@ -107,7 +114,7 @@ spielliste = listen.spiele
 # Erzeugung des Fensters
 root = tk.Tk()
 root.geometry("600x600")
-root.title("gamePicker - Falls du nicht mehr weiter weißt")
+root.title("gamePicker v1.0.1 - Falls du nicht mehr weiter weißt")
 
 # Einstellung GUI
 root.tk.call("source", lnk_azure)

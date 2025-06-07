@@ -1,4 +1,4 @@
-spiele = ["Sims 4", "InZOI"]
+spiele = ["Sims 4", "InZOI", "Film / Serie"]
 
 neon_farben = {
     "Neon Pink": "#FF6EC7",
