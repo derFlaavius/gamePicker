@@ -16,6 +16,7 @@ def clearwdw(): # Löscht den gesamten Inhalt eines Fensters!
 
 def hinzufuegen(liste, eingabe):
     if eingabe != "":
+        tf_spieleingabe.get() # Ist nur da, da durch drücken von Enter die Zeile nicht gelöscht wird
         liste.append(eingabe)
         mainpage(liste)
     else:
@@ -38,8 +39,9 @@ def wuerfeln(liste12): # ChatGPT
         messagebox.showwarning("Eingabefehler", "Bitte gib zuvor ein paar Namen ein!")
         return
     
-    durchlaeufe = 10
+    durchlaeufe = random.randint(3, 40)
     delay = 250  # ms
+    print(f"Durchläufe: {durchlaeufe}")
 
     # Wenn schon ein Label existiert, updaten wir es
     if not hasattr(root, "lb_info"):
@@ -67,6 +69,7 @@ def mainpage(spielliste):
 
 
     clearwdw()
+    global tf_spieleingabe
     pic_logo1.pack()
     widthbtn = 21 # Größe der Elemente
 
@@ -76,12 +79,15 @@ def mainpage(spielliste):
 
     # Entry
     tf_spieleingabe = ttk.Entry(root, width=(widthbtn + 1))
+
+    tf_spieleingabe.bind('<Return>', lambda event: hinzufuegen(spielliste, tf_spieleingabe.get()))
     
     # Buttons
     bn_hinzufuegen = ttk.Button(root, text="Hinzufügen", width=widthbtn, command=lambda:hinzufuegen(spielliste, tf_spieleingabe.get()))
     bn_start = ttk.Button(root, text="Starten", width=widthbtn, command=lambda:wuerfeln(spielliste))
     bn_reset = ttk.Button(root, text="Rücksetzen", width=widthbtn, command=lambda:reset(spielliste))
     bn_abbrechen = ttk.Button(root, text="Beenden", width=widthbtn, command=lambda:sys.exit())
+
 
     # Deklaration Abstände und größen
     xwert = 40
@@ -106,7 +112,7 @@ def mainpage(spielliste):
 
 # Deklaration Pfade
 lnk_azure = os.path.join(os.path.dirname(__file__), "themes", "azure", "azure.tcl")
-lnk_logo1 = os.path.join(os.path.dirname(__file__), "images", "logo1.png")
+lnk_logo1 = os.path.join(os.path.dirname(__file__), "images", "logo3.png")
 
 # Erzeugung der Listen
 spielliste = listen.spiele
@@ -114,7 +120,7 @@ spielliste = listen.spiele
 # Erzeugung des Fensters
 root = tk.Tk()
 root.geometry("600x600")
-root.title("gamePicker v1.0.1 - Falls du nicht mehr weiter weißt")
+root.title("gamePicker v1.1.0 - Falls du nicht mehr weiter weißt")
 
 # Einstellung GUI
 root.tk.call("source", lnk_azure)
