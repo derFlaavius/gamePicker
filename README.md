@@ -17,4 +17,4 @@ Perfekt für Entscheidungsschwache, Streamer, Gruppenabende oder einfach faule N
 v1.1.0 Neuerungen:
 - Spiele können mit "Enter" hinzugefügt werden
 - Auswahl kann nun länger dauern. Oder auch nicht. Wie nervig!
-- Kleinere Buxfixes
+- Kleinere Bugfixes
